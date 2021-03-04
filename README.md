@@ -1,0 +1,2 @@
+# squelch
+Squelch squelches SQL
