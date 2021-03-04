@@ -2,5 +2,6 @@
 
 require "squelch/version"
 
+# A simple SQL obfuscator.
 module Squelch
 end
