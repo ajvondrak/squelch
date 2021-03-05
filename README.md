@@ -5,8 +5,7 @@ Squelch squelches SQL!
 ```sql
 -- Before
 INSERT INTO users(name, address, phone) VALUES ("John Doe", "1600 Pennsylvania Ave", "867-5309");
-```
-```sql
+
 -- After
 INSERT INTO users(name, address, phone) VALUES (?, ?, ?);
 ```
