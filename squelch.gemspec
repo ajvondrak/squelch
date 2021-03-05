@@ -18,6 +18,6 @@ Gem::Specification.new do |spec|
   DESC
   spec.author = "Alex Vondrak"
   spec.email = "ajvondrak@gmail.com"
-  spec.files = Dir["lib/**/*"]
-  spec.license = "Apache-2.0"
+  spec.files = Dir["lib/**/*", "LICENSE", "README.md"]
+  spec.license = "MIT"
 end
