@@ -18,7 +18,20 @@ This gem is a purposefully simple string obfuscator. It aims to replace every da
 The code was originally adapted from the [`NewRelic::Agent::Database::ObfuscationHelpers`](https://github.com/newrelic/newrelic-ruby-agent/blob/f0290ab6468ad205dd014d63c794883dc47eebe7/lib/new_relic/agent/database/obfuscation_helpers.rb) in the [newrelic\_rpm](https://rubygems.org/gems/newrelic_rpm) gem. By abstracting out these low-level implementation details, the hope is that Squelch can empower other libraries to easily sanitize their SQL logs.
 
 ## Installation
-TODO
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem "squelch"
+```
+
+and then install it with `bundle install`.
+
+Alternatively, you could install it to your system's gems with:
+
+```console
+$ gem install squelch
+```
 
 ## Usage
 
