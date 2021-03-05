@@ -63,5 +63,39 @@ module Squelch
     def self.pattern(db)
       PATTERNS[db] || PATTERNS[:default]
     end
+
+    PAIRS = {
+      mysql: Regexp.union(
+        Pairs::SINGLE_QUOTED,
+        Pairs::DOUBLE_QUOTED,
+        Pairs::BLOCK_COMMENT,
+      ),
+      postgres: Regexp.union(
+        Pairs::SINGLE_QUOTED,
+        Pairs::DOLLAR_QUOTED,
+        Pairs::BLOCK_COMMENT,
+      ),
+      sqlite: Regexp.union(
+        Pairs::SINGLE_QUOTED,
+        Pairs::BLOCK_COMMENT,
+      ),
+      cassandra: Regexp.union(
+        Pairs::SINGLE_QUOTED,
+        Pairs::BLOCK_COMMENT,
+      ),
+      oracle: Regexp.union(
+        Pairs::SINGLE_QUOTED,
+        Pairs::BLOCK_COMMENT,
+      ),
+      default: Regexp.union(
+        Pairs::SINGLE_QUOTED,
+        Pairs::DOUBLE_QUOTED,
+        Pairs::BLOCK_COMMENT,
+      ),
+    }.freeze
+
+    def self.pairs(db)
+      PAIRS[db] || PAIRS[:default]
+    end
   end
 end
