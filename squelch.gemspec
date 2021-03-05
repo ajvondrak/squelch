@@ -20,4 +20,11 @@ Gem::Specification.new do |spec|
   spec.email = "ajvondrak@gmail.com"
   spec.files = Dir["lib/**/*", "LICENSE", "README.md"]
   spec.license = "MIT"
+
+  spec.metadata = {
+    "bug_tracker_uri" => "https://github.com/ajvondrak/squelch/issues",
+    "documentation_uri" => "https://rubydoc.info/github/ajvondrak/squelch/main",
+    "homepage_uri" => spec.homepage,
+    "source_code_uri" => spec.homepage,
+  }
 end
