@@ -12,7 +12,8 @@ group :development do
 end
 
 group :test do
-  gem "coveralls_reborn", require: "coveralls"
   gem "minitest"
   gem "minitest-reporters"
+  gem "simplecov"
+  gem "simplecov-lcov"
 end
