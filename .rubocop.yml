@@ -7,3 +7,15 @@ Layout/LineLength:
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+
+Style/RegexpLiteral:
+  EnforcedStyle: mixed
+
+Style/RedundantRegexpEscape:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
