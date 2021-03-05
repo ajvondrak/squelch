@@ -1,6 +1,7 @@
 # Squelch
 
 [![build](https://github.com/ajvondrak/squelch/workflows/build/badge.svg)](https://github.com/ajvondrak/squelch/actions?query=workflow%3Abuild)
+[![coverage](https://coveralls.io/repos/github/ajvondrak/squelch/badge.svg?branch=main)](https://coveralls.io/github/ajvondrak/squelch?branch=main)
 
 Squelch squelches SQL!
 

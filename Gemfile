@@ -12,6 +12,7 @@ group :development do
 end
 
 group :test do
+  gem "coveralls"
   gem "minitest"
   gem "minitest-reporters"
 end
