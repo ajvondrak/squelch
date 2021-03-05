@@ -19,3 +19,7 @@ Style/TrailingCommaInArguments:
 
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
+
+Metrics/ClassLength:
+  Exclude:
+    - test/**/*_test.rb

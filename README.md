@@ -18,4 +18,55 @@ The code was originally adapted from the [`NewRelic::Agent::Database::Obfuscatio
 TODO
 
 ## Usage
-TODO
+
+### Basic interface
+
+The main API is the `Squelch.obfuscate` method, which takes in your SQL string and returns an obfuscated version of it.
+
+```ruby
+Squelch.obfuscate("SELECT * FROM social_security_cards WHERE number = 'pii';")
+
+#=> "SELECT * FROM social_security_cards WHERE number = ?;"
+```
+
+This method is powered by regular expression patterns, some of which correspond to particular database systems. For example, Postgres supports a unique [dollar quoting](https://www.postgresql.org/docs/13/sql-syntax-lexical.html#SQL-SYNTAX-DOLLAR-QUOTING) syntax, while Oracle has its own [Q quoting](https://livesql.oracle.com/apex/livesql/file/content_CIREYU9EA54EOKQ7LAMZKRF6P.html) syntax. If possible, try to always supply the optional `db:` keyword parameter with a symbol corresponding to your RDMS. The currently supported options are `:mysql`, `:postgres`, `:sqlite`, `:oracle`, and `:cassandra`, but any other option will fall back safely to a generic default pattern.
+
+```ruby
+Squelch.obfuscate("SELECT * FROM credit_cards WHERE number = $pii$ ... $pii$;", db: :postgres)
+
+#=> "SELECT * FROM credit_cards WHERE number = ?;"
+```
+
+```ruby
+Squelch.obfuscate("SELECT * FROM phones WHERE number = q'<pii>';", db: :oracle)
+
+#=> "SELECT * FROM phones WHERE number = ?;"
+```
+
+### Handling errors
+
+When there's an issue with squelching the SQL, we don't want to risk of using the problematic results that might still be leaking PII. The error-safe `Squelch.obfuscate` method returns a single `?` placeholder in the event of an issue, but Squelch has the error-raising variant `Squelch.obfuscate!` as well.
+
+```ruby
+Squelch.obfuscate("SELECT * FROM table WHERE pii = 'a string missing a closing quote;")
+
+#=> "?"
+```
+
+```ruby
+Squelch.obfuscate!("SELECT * FROM table WHERE pii = 'a string missing a closing quote;")
+
+#=> Squelch::Error: Failed to squelch SQL, delimiter ' remained after obfuscation
+```
+
+If you rescue the `Squelch::Error`, you can access the problematic obfuscation result in `Squelch::Error#obfuscation`.
+
+```ruby
+begin
+  Squelch.obfuscate!("SELECT * FROM users WHERE id = 12345 AND name = 'Mister Danglin' Quote';")
+rescue Squelch::Error => e
+  e.obfuscation
+end
+
+#=> "SELECT * FROM users WHERE id = ? AND name = ? Quote';"
+```
