@@ -1,5 +1,7 @@
 # Squelch
 
+[![build](https://github.com/ajvondrak/squelch/workflows/build/badge.svg)](https://github.com/ajvondrak/squelch/actions?query=workflow%3Abuild)
+
 Squelch squelches SQL!
 
 ```sql
