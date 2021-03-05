@@ -12,7 +12,7 @@ group :development do
 end
 
 group :test do
-  gem "coveralls"
+  gem "coveralls_reborn"
   gem "minitest"
   gem "minitest-reporters"
 end
