@@ -70,7 +70,7 @@ module Squelch
       \*/           # block comments close with a star-slash
     }mx.freeze
 
-    UUID = /\{?\h{8}\-\h{4}\-\h{4}\-\h{4}\-\h{12}\}?/.freeze
+    UUID = /\{?(?:[0-9a-fA-F]-*){32}\}?/.freeze
 
     NUMBER = /-?\b(?:[0-9]+\.)?[0-9]+([eE][+-]?[0-9]+)?\b/.freeze
 
