@@ -87,3 +87,7 @@ end
 
 #=> "SELECT * FROM users WHERE id = ? AND name = ? Quote';"
 ```
+
+## Documentation
+
+Full API documentation can be found [on RubyDoc.info](https://rubydoc.info/github/ajvondrak/squelch/main).
