@@ -63,7 +63,7 @@ Squelch.obfuscate("SELECT * FROM phones WHERE number = q'<pii>';", db: :oracle)
 
 ### Handling errors
 
-When there's an issue with squelching the SQL, we don't want to risk of using the problematic results that might still be leaking PII. The error-safe `Squelch.obfuscate` method returns a single `?` placeholder in the event of an issue, but Squelch has the error-raising variant `Squelch.obfuscate!` as well.
+When there's an issue with squelching the SQL, we don't want to risk using the problematic results that might still be leaking PII. The error-safe `Squelch.obfuscate` method returns a single `?` placeholder in the event of an issue, but Squelch has the error-raising variant `Squelch.obfuscate!` as well.
 
 ```ruby
 Squelch.obfuscate("SELECT * FROM table WHERE pii = 'a string missing a closing quote;")
